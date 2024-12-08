@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import BookAddPage from "./pages/BookAddPage.tsx";
 import {Book} from "./type.ts";
 
 const App: React.FC = () => {
@@ -7,7 +8,7 @@ const App: React.FC = () => {
   const [inputData, setInputData] = useState({
     name: "",
     author: "",
-    price: 0,
+    price: "",
     introduce: "",
   })
   // inputData 입력 메서드
@@ -43,27 +44,41 @@ const App: React.FC = () => {
         id: bookList.length + 1,
         name: inputData.name,
         author: inputData.author,
-        price: inputData.price,
+        price: Number(inputData.price),
         introduce: inputData.introduce
       }
     ])
+    console.log(bookList);
     // inputData 초기화
     setInputData({
       name: "",
       author: "",
-      price: 0,
+      price: "",
       introduce: "",
     })
   }
 
   return (
     <div>
+      {/* 책 정보 추가 */}
       <div className="add-book-info">
-        <input type="text" name="name" placeholder="도서명 입력" onChange={handleNameChange}/> <br/>
-        <input type="text" name="author" placeholder="저자 입력" onChange={handleAuthorChange}/> <br/>
-        <input type="number" name="price" placeholder="가격 입력" onChange={handlePriceChange}/> <br/>
-        <input type="text" name="introduce" placeholder="책 소개 입력" onChange={handleIntroduceChange}/> <br/>
+        <input type="text" name="name" placeholder="도서명 입력" value={inputData.name} onChange={handleNameChange}/>
+        <input type="text" name="author" placeholder="저자 입력" value={inputData.author} onChange={handleAuthorChange}/>
+        <input type="number" name="price" placeholder="가격 입력" value={inputData.price} onChange={handlePriceChange}/>
+        <input type="text" name="introduce" placeholder="책 소개 입력" value={inputData.introduce} onChange={handleIntroduceChange}/>
         <button onClick={addBookInfo}>추가하기</button>
+      </div>
+
+      {/* 책 리스트 */}
+      <div>
+        <ul>
+          {bookList.map((book) => (
+            <li key={book.id}>
+              <strong>{book.name}</strong> - {book.author} ({book.price}원) <br/>
+              소개: {book.introduce}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   )
