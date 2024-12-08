@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import BookAddPage from "./pages/BookAddPage.tsx";
 import {Book} from "./type.ts";
 
 const App: React.FC = () => {
@@ -27,7 +26,7 @@ const App: React.FC = () => {
   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputData({
       ...inputData,
-      price: Number(e.target.value),
+      price: e.target.value,
     })
   }
   const handleIntroduceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
