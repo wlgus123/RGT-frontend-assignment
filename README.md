@@ -8,3 +8,6 @@
   - React + Typescript + Vite 사용
   - react-router-dom을 사용하여 주소에 맞는 페이지 호출
   - GitHub 칸반 작성 및 git flow 전략
+- **시연 영상**
+https://github.com/user-attachments/assets/eff344d5-e06e-44f9-9235-dc51c5368fb7
+
